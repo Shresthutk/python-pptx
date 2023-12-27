@@ -55,7 +55,21 @@ class TextFrame(Subshape):
             self._txBody.remove(p)
         p = self.paragraphs[0]
         p.clear()
-
+    
+    
+    def update_text(self,new_text):
+        '''
+        Updates the paragraph with the new text without changing the format
+        '''
+        paragraph = self.paragraphs[1]
+        p = paragraph._p  
+        for idx, run in enumerate(paragraph.runs):
+            if idx == 0:
+                continue
+            p.remove(run._r)
+        paragraph.runs[0].text = new_text
+    
+    
     def fit_text(
         self,
         font_family="Calibri",
