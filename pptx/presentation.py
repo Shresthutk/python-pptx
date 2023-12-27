@@ -40,6 +40,13 @@ class Presentation(PartElementProxy):
         """
         self.part.save(file)
 
+    def shape_index(self,slide_index,shape_name):
+        i = 0
+        for shapes in self.part[slide_index].shapes:
+            if (shapes.name == shape_name):
+                return i
+            i += 1
+    
     @property
     def slide_height(self):
         """
