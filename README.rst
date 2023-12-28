@@ -1,7 +1,29 @@
-*python-pptx-valutico* is a Python library for creating and updating PowerPoint (.pptx)
-files.
+Basically, this is https://github.com/AndreasSteiner/python-pptx, just with support for few new functions and few bugs fixes.
 
-Basically, this is https://github.com/scanny/python-pptx, just with support for row / col adding and removing.
+
+##Function Added
+#Remove method to directly remove a table or groupshape or a picture 
+e.g prs = presentation(file_path)
+prs.slides[slide_index].shapes[shape_index].remove() will remove the element 
+
+#replace_with_picture method
+e.g.
+prs.replace_with_picture(slide_index,shape_name,img_path)
+
+#shape_index method
+e.g
+prs.shape_index(slide_index,shape_name) returns the index of shape that you can use to target a particular shape in the slide
+
+#update_text method
+e.g
+textFrame = prs.slides[6].shapes[8].text_frame
+textFrame.update_text(new_text) will update the text in that text frame while retaining the format of old text.
+This method returns the updated text
+
+##Issue Fixed
+Fixed issue with Python 3.10+ - "AttributeError: module 'collections' has no attribute 'abc'"
+function to replace any shape with a picture
+
 
 A typical use would be generating a customized PowerPoint presentation from
 database content, downloadable by clicking a link in a web application.
