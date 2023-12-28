@@ -8,15 +8,15 @@ Basically, this is [python-pptx](https://github.com/AndreasSteiner/python-pptx),
 e.g prs = presentation(file_path)  
 prs.slides[slide_index].shapes[shape_index].remove() will remove the element 
 
-**replace_with_picture method**  
+**replace_with_picture method to replace a shape within a slide with a picture**  
 e.g.  
 prs.replace_with_picture(slide_index,shape_name,img_path)
 
-**shape_index method**  
+**shape_index method simply returns the index of a shape from its name**  
 e.g  
 prs.shape_index(slide_index,shape_name) returns the index of shape that you can use to target a particular shape in the slide
 
-**update_text method**  
+**update_text method updated the text within a text frame while retaining the original formatting of the text**  
 e.g  
 textFrame = prs.slides[6].shapes[8].text_frame  
 textFrame.update_text(new_text) will update the text in that text frame while retaining the format of old text.  
