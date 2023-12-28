@@ -25,8 +25,6 @@ This method returns the updated text
 ## Issue Fixed
 
 **Fixed issue with Python 3.10+ - "AttributeError: module 'collections' has no attribute 'abc'"**
-Function to replace any shape with a picture
-
 
 A typical use would be generating a customized PowerPoint presentation from
 database content, downloadable by clicking a link in a web application.
