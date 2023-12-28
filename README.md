@@ -1,30 +1,32 @@
 # Python-pptx-Enhanced
 
-This is a modified version of [python-pptx](https://github.com/AndreasSteiner/python-pptx), incorporating support for additional functions and bug fixes.
+Basically, this is [python-pptx](https://github.com/AndreasSteiner/python-pptx), just with support for few new functions and few bugs fixes.
 
 ## Function Added
 
-**Remove method to directly remove a table or groupshape or a picture**
-e.g prs = presentation(file_path)
+**Remove method to directly remove a table or groupshape or a picture**  
+e.g prs = presentation(file_path)  
 prs.slides[slide_index].shapes[shape_index].remove() will remove the element 
 
-**replace_with_picture method**
-e.g.
+**replace_with_picture method**  
+e.g.  
 prs.replace_with_picture(slide_index,shape_name,img_path)
 
-**shape_index method**
-e.g
+**shape_index method**  
+e.g  
 prs.shape_index(slide_index,shape_name) returns the index of shape that you can use to target a particular shape in the slide
 
-**update_text method**
-e.g
-textFrame = prs.slides[6].shapes[8].text_frame
-textFrame.update_text(new_text) will update the text in that text frame while retaining the format of old text.
+**update_text method**  
+e.g  
+textFrame = prs.slides[6].shapes[8].text_frame  
+textFrame.update_text(new_text) will update the text in that text frame while retaining the format of old text.  
 This method returns the updated text
 
 ## Issue Fixed
 
-**Fixed issue with Python 3.10+ - "AttributeError: module 'collections' has no attribute 'abc'"**
+**Fixed issue with Python 3.10+ - "AttributeError: module 'collections' has no attribute 'abc'"**  
+Function to replace any shape with a picture
+
 
 A typical use would be generating a customized PowerPoint presentation from
 database content, downloadable by clicking a link in a web application.
