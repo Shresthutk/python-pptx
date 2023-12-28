@@ -68,6 +68,7 @@ class TextFrame(Subshape):
                 continue
             p.remove(run._r)
         paragraph.runs[0].text = new_text
+        return new_text
     
     
     def fit_text(

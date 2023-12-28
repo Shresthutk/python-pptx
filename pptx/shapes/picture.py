@@ -90,7 +90,9 @@ class _BasePicture(BaseShape):
         line color and width. |None| if no ``<a:ln>`` element is present.
         """
         return self._pic.ln
-
+    
+    def remove(self):
+         self._element.getparent().remove(self._element)
 
 class Movie(_BasePicture):
     """A movie shape, one that places a video on a slide.
@@ -201,8 +203,9 @@ class Picture(_BasePicture):
         ``MSO_SHAPE_TYPE.PICTURE`` in this case.
         """
         return MSO_SHAPE_TYPE.PICTURE
+    
 
-
+    
 class _MediaFormat(ParentedElementProxy):
     """Provides access to formatting properties for a Media object.
 

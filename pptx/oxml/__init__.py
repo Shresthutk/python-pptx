@@ -359,6 +359,7 @@ from .shapes.groupshape import (  # noqa: E402
     CT_GroupShape,
     CT_GroupShapeNonVisual,
     CT_GroupShapeProperties,
+    
 )
 
 register_element_cls("p:grpSp", CT_GroupShape)

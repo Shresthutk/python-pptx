@@ -346,6 +346,8 @@ class _BaseGroupShapes(_BaseShapes):
         self._recalculate_extents()
         return self._shape_factory(sp)
 
+    
+    
     def add_textbox(self, left, top, width, height):
         """Return newly added text box shape appended to this shape tree.
 
@@ -467,7 +469,8 @@ class _BaseGroupShapes(_BaseShapes):
         # ---default behavior is to do nothing, GroupShapes overrides to
         #    produce the distinctive behavior of groups and subgroups.---
         pass
-
+    def remove(self):
+         self._element.getparent().remove(self._element)
 
 class GroupShapes(_BaseGroupShapes):
     """The sequence of child shapes belonging to a group shape.
@@ -483,7 +486,9 @@ class GroupShapes(_BaseGroupShapes):
         removed, or its position or size updated.
         """
         self._grpSp.recalculate_extents()
-
+        
+    def remove(self):
+         self._element.getparent().remove(self._element)
 
 class SlideShapes(_BaseGroupShapes):
     """Sequence of shapes appearing on a slide.
@@ -551,6 +556,9 @@ class SlideShapes(_BaseGroupShapes):
         graphic_frame = self._shape_factory(graphicFrame)
         return graphic_frame
 
+    def remove(self):
+         self._element.getparent().remove(self._element)
+    
     def clone_layout_placeholders(self, slide_layout):
         """
         Add placeholder shapes based on those in *slide_layout*. Z-order of
@@ -605,7 +613,7 @@ class SlideShapes(_BaseGroupShapes):
         *shape_elm*.
         """
         return SlideShapeFactory(shape_elm, self)
-
+    
 
 class LayoutShapes(_BaseShapes):
     """

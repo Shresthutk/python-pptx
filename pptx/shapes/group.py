@@ -59,3 +59,4 @@ class GroupShape(BaseShape):
         from pptx.shapes.shapetree import GroupShapes
 
         return GroupShapes(self._element, self)
+    

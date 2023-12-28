@@ -6,7 +6,7 @@ __version__ = "0.6.24.3"
 
 
 import sys
-
+from collections import abc
 import pptx.exc as exceptions
 
 sys.modules["pptx.exceptions"] = exceptions

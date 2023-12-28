@@ -170,6 +170,9 @@ class Chart(PartElementProxy):
         rewriter.replace_series_data(self._chartSpace)
         self._workbook.update_from_xlsx_blob(chart_data.xlsx_blob)
 
+    def remove(self):
+         self._element.getparent().remove(self._element)
+    
     @lazyproperty
     def series(self):
         """

@@ -7,6 +7,7 @@ from pptx.opc.package import _Relationships
 from pptx.shared import PartElementProxy
 from pptx.slide import SlideMasters, Slides
 from pptx.util import lazyproperty
+import win32com.client as win32
 
 
 class Presentation(PartElementProxy):
@@ -42,7 +43,7 @@ class Presentation(PartElementProxy):
 
     def shape_index(self,slide_index,shape_name):
         i = 0
-        for shapes in self.part[slide_index].shapes:
+        for shapes in self.slides[slide_index].shapes:
             if (shapes.name == shape_name):
                 return i
             i += 1
@@ -139,3 +140,11 @@ class Presentation(PartElementProxy):
         # Move appended slide into target_index
         self.slides.element.insert(target_index, self.slides.element[-1])
         return dest
+    
+    def replace_with_picture(self,slide_idx,shape_name,picture):
+        #Replaces any shape with picture
+        idx = Presentation.shape_index(self,slide_idx,shape_name)
+        pic = self.slides[slide_idx].shapes[idx]
+        pic._element.getparent().remove(pic._element)
+        self.slides[slide_idx].shapes.add_picture(picture, pic.left, pic.top, width=pic.width, height=pic.height)
+    

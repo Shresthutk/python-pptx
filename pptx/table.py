@@ -31,7 +31,9 @@ class Table(object):
         zero-based, e.g. cell(0, 0) is the top, left cell in the table.
         """
         return _Cell(self._tbl.tc(row_idx, col_idx), self)
-
+    
+    def remove(self):
+         self._element.getparent().remove(self._element)
     @lazyproperty
     def columns(self):
         """|_ColumnCollection| instance for this table.
